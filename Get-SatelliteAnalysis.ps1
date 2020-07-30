@@ -175,4 +175,7 @@ Top 10 users
   11 Commercial/Civil
    6 Military/Civil
 
+More info
+https://www.ucsusa.org/resources/satellite-database
+
 #>
