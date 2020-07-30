@@ -3,66 +3,39 @@ $r = Invoke-WebRequest $url -UseBasicParsing
 
 # convert to CSV by hand
 
-$sat = import-csv .\Downloads\UCS-Satellite-Database-4-1-2020.csv
+$sat = import-csv .\Downloads\UCS-Satellite-Database-4-1-2020.csv -Delimiter ';'
 
-$sat = import-csv .\Downloads\UCS-Satellite-Database-4-1-2020.csv -Delimiter ';'
-$sat = import-csv .\Downloads\UCS-Satellite-Database-4-1-2020.csv -Delimiter ';'
-$sat | gm
-cls
-$sat | gm
-$sat|group 'class of orbit'
-$sat|group 'class of orbit'|sort count
-$sat|group 'class of orbit'|sort count -Descending
 $sat.count
-$sat|group 'Comments'|sort count -Descending
-$sat|group Contractor|sort count -Descending
-$sat|group Contractor|sort count -Descending | select -first 10
+
+$sat|group 'class of orbit'|sort count -Descending
+
 $sat|group Contractor|sort count -Descending | select -first 10 count, name
-cls
-$sat | gm
+
 $sat|group 'Country of Contractor'|sort count -Descending | select -first 10 count, name
 $sat|group 'Country of Operator/Owner'|sort count -Descending | select -first 10 count, name
 $sat|group 'Country/Org of UN Registry'|sort count -Descending | select -first 10 count, name
-$sat|group 'Expected Lifetime (yrs.)'|sort count -Descending | select -first 10 count, name
-$sat|group 'Expected Lifetime (yrs.)'|sort name -Descending | select -first 10 count, name
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e=[int]$_.name}}
-$sat|group 'Expected Lifetime (yrs.)'
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={[int]$_.name}}
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={[int]$_.name}}|sort years
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={[float]$_.name}}|sort years
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={$_.name}}|sort years
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={$_.name.replace(',','.')}}|sort years
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={[float]($_.name.replace(',','.'))}}|sort years
-$sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={[float]($_.name.replace(',','.'))}}|sort count
+
 $sat|group 'Expected Lifetime (yrs.)'|select  count, @{name='years';e={[float]($_.name.replace(',','.'))}}|sort count -Descending
-$sat|gm
-$sat|group h1
-$sat|group Launch Site
-$sat|group 'Launch Site'
-$sat|group 'Launch Site' | sort count -Descending
+
 $sat|group 'Launch Site' | sort count -Descending | select -first 10 count, name
-$sat|gm
+
 $sat|group 'Launch Vehicle' | sort count -Descending | select -first 10 count, name
 $sat|group 'Longitude of GEO (degrees)' | sort count -Descending | select -first 10 count, name
 $sat|group 'Operator/Owner' | sort count -Descending | select -first 10 count, name
-$sat|gm
+
 $sat|group 'Perigee (km)' | sort count -Descending | select -first 10 count, name
 $sat|group 'Period (minutes)' | sort count -Descending | select -first 10 count, name
-1400/60
-$sat|group 'Power (watts)' | sort count -Descending | select -first 10 count, name
-$sat|group 'Power (watts)' | sort count -Descending | select  count, name
-$sat|gm
 $sat|group 'Purpose' | sort count -Descending | select -first 10 count, name
 $sat|group 'Source Used for Orbital Data' | sort count -Descending | select -first 10 count, name
+
 $sat|group 'Type of Orbit' | sort count -Descending | select -first 10 count, name
 $sat|group 'Type of Orbit' | sort count -Descending | select count, name
-$sat|group 'Users' | sort count -Descending | select count, name
+
 $sat|group 'Users' | sort count -Descending | select count, name -first 10
 
 
-
-Total satellites
-2666
+<#
+Total satellites: 2666
 
 Class of Orbit
  1918 LEO       
@@ -202,4 +175,4 @@ Top 10 users
   11 Commercial/Civil
    6 Military/Civil
 
-
+#>
